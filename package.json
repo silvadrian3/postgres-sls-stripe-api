@@ -1,0 +1,50 @@
+{
+  "name": "postgres-sls-stripe-api",
+  "version": "1.0.0",
+  "description": "SubFlow - Multi-Tenant SaaS Billing & Subscription Platform",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "deploy:dev": "serverless deploy --stage dev",
+    "deploy:prod": "serverless deploy --stage prod",
+    "offline": "serverless offline start",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silvadrian3/postgres-sls-stripe-api.git"
+  },
+  "author": "silvadrian3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/silvadrian3/postgres-sls-stripe-api/issues"
+  },
+  "homepage": "https://github.com/silvadrian3/postgres-sls-stripe-api#readme",
+  "dependencies": {
+    "@aws-sdk/client-eventbridge": "^3.922.0",
+    "@aws-sdk/client-s3": "^3.922.0",
+    "@aws-sdk/client-sns": "^3.922.0",
+    "@aws-sdk/client-sqs": "^3.922.0",
+    "date-fns": "^4.1.0",
+    "joi": "^18.0.1",
+    "pdfkit": "^0.17.2",
+    "pg": "^8.16.3",
+    "stripe": "^19.2.0",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.157",
+    "@types/node": "^24.10.0",
+    "@types/pdfkit": "^0.17.3",
+    "@types/pg": "^8.15.6",
+    "serverless": "^3.40.0",
+    "serverless-appsync-plugin": "^1.12.1",
+    "serverless-dotenv-plugin": "^6.0.0",
+    "serverless-offline": "^8.8.1",
+    "serverless-plugin-split-stacks": "^1.13.0",
+    "serverless-webpack": "^5.6.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "webpack": "^5.76.2"
+  }
+}

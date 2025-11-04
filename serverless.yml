@@ -1,0 +1,49 @@
+service: subflow-api
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: ${env:AWS_REGION, 'us-east-1'}
+  stage: ${opt:stage, 'dev'}
+
+  environment:
+    NODE_ENV: ${env:NODE_ENV, 'development'}
+    STAGE: ${self:provider.stage}
+    DB_HOST: ${env:DB_HOST, 'localhost'}
+    DB_PORT: ${env:DB_PORT, '5432'}
+    DB_NAME: ${env:DB_NAME, 'subflow_dev'}
+    DB_USER: ${env:DB_USER, 'postgres'}
+    DB_PASSWORD: ${env:DB_PASSWORD, ''}
+    STRIPE_SECRET_KEY: ${env:STRIPE_SECRET_KEY, ''}
+    STRIPE_WEBHOOK_SECRET: ${env:STRIPE_WEBHOOK_SECRET, ''}
+    S3_BUCKET_INVOICES: ${env:S3_BUCKET_INVOICES, 'subflow-invoices-dev'}
+
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+          Resource: "*"
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-offline
+
+package:
+  individually: true
+  patterns:
+    - "!node_modules/**"
+    - "!.git/**"
+    - "!tests/**"
+    - "!.env"
+
+# We'll add functions in the next step
+functions: {}
+
+# We'll add resources in the next step
+resources: {}

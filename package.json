@@ -8,7 +8,8 @@
     "deploy:dev": "serverless deploy --stage dev",
     "deploy:prod": "serverless deploy --stage prod",
     "offline": "serverless offline start",
-    "test": "jest"
+    "test": "jest",
+    "migrate": "ts-node scripts/migrate.ts"
   },
   "repository": {
     "type": "git",
